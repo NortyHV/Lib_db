@@ -42,6 +42,8 @@ insert into parking_place  values ( 1, 21, 1.5, 7, 2);
 insert into parking_place  values ( 1, 22, 1.5, 8, 2);
 insert into parking_place  values ( 2, 2, 0.0, 9, 1);
 insert into parking_place  values ( 3, 1, 0.0, 10, 1);
+insert into parking_place  values ( 1, 11, 10, null, null);
+
 
 select * from parking_place pp ;
 
