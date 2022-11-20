@@ -19,3 +19,21 @@ select * from parking_place where number = id and floor = 3;'
 language sql;
 
 select parking_place_update(pp."number")  from parking_place pp;
+
+
+
+create or replace function update_overtime() returns setof orders as
+$body$
+declare ord orders;
+begin 
+   for ord in select * from orders where overtime = true 
+loop 
+   update orders set overtime = false, date_to = null where orders.id = ord.id;
+   update parking_place set car_id = null where floor = ord.pp_floor and number = ord.pp_number;
+return next ord;
+end loop;
+end;
+$body$
+language plpgsql;
+
+select update_overtime();

@@ -34,18 +34,18 @@ create table if not exists parking_place (
  primary key (floor, number),
  cost float4 not null,
  car_id int4,
- parking_id int4 not null,
+ parking_id int4,
 foreign key (car_id) references car(id),
 foreign key (parking_id) references parking(id)
 );
 
 create table if not exists orders (
  id bigserial primary key,
- pp_floor int4 not null,
- pp_number int4 not null,
+ pp_floor int4,
+ pp_number int4,
  date_from timestamp,
  date_to timestamp,
- overtime bool not null,
+ overtime bool,
  foreign key (pp_floor, pp_number) references parking_place(floor, number)
 );
 
